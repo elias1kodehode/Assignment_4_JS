@@ -1,0 +1,20 @@
+.big-container {
+  height: 100dvh;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.generated-tile {
+  transition: transform 1000ms ease-out 0s;
+}
+.generated-tile:hover {
+  transform: scale(1.5);
+}
+.wrapper {
+  margin-left: 0 auto;
+}
+.shopping-list {
+  background-color: grey;
+  border: 1px solid black;
+  border-radius: 8px;
+}
