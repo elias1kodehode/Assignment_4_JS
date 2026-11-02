@@ -2,11 +2,16 @@ const bigContainer = document.querySelector(".big-container");
 const rowsInput = document.getElementById("rows");
 const columnsInput = document.getElementById("columns");
 const button = document.getElementById("generate-button");
+const saveButton = document.getElementById("save-button");
 const shoppingListContainer = document.getElementById("shopping-list");
 const squareSize = 30;
 const nameInput = document.getElementById("list-name");
 const listSize = document.getElementById("list-size");
-const shoppingLists = [];
+let shoppingLists = [];
+
+console.log(shoppingLists);
+loadLists();
+renderLists();
 
 function renderList(list) {
   const ul = document.createElement("ul");
@@ -30,6 +35,9 @@ function renderList(list) {
     li.appendChild(inputText);
     inputCheck.type = "checkbox";
     inputCheck.checked = item.checked;
+    if (inputCheck.checked) {
+      inputText.style.textDecoration = "line-through";
+    }
     inputCheck.addEventListener("change", () => {
       item.checked = inputCheck.checked;
       if (item.checked) {
@@ -49,6 +57,7 @@ function renderList(list) {
     if (index !== -1) {
       shoppingLists.splice(index, 1);
     }
+    saveLists();
     renderLists();
   });
   shoppingList.appendChild(deleteButton);
@@ -81,4 +90,15 @@ function generateNewList(name, size) {
     newList.items.push({ name: "", checked: false });
   }
   shoppingLists.push(newList);
+  saveLists();
+}
+
+saveButton.addEventListener("click", saveLists);
+function saveLists() {
+  localStorage.setItem("shoppingLists", JSON.stringify(shoppingLists));
+}
+function loadLists() {
+  const lists = localStorage.getItem("shoppingLists");
+
+  shoppingLists = JSON.parse(lists);
 }

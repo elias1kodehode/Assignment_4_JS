@@ -1,5 +1,5 @@
 .big-container {
-  height: 100dvh;
+  height: 90dvh;
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -17,4 +17,5 @@
   background-color: grey;
   border: 1px solid black;
   border-radius: 8px;
+  min-width: 300px;
 }
