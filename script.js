@@ -66,8 +66,10 @@ function renderList(list) {
 }
 function renderLists() {
   bigContainer.innerHTML = "";
-  for (const list of shoppingLists) {
-    renderList(list);
+  if (shoppingLists) {
+    for (const list of shoppingLists) {
+      renderList(list);
+    }
   }
 }
 
@@ -99,6 +101,7 @@ function saveLists() {
 }
 function loadLists() {
   const lists = localStorage.getItem("shoppingLists");
-
-  shoppingLists = JSON.parse(lists);
+  if (lists) {
+    shoppingLists = JSON.parse(lists);
+  }
 }
