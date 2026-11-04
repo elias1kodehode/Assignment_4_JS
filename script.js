@@ -1,10 +1,7 @@
 const bigContainer = document.querySelector(".big-container");
-const rowsInput = document.getElementById("rows");
-const columnsInput = document.getElementById("columns");
+
 const button = document.getElementById("generate-button");
-const saveButton = document.getElementById("save-button");
-const shoppingListContainer = document.getElementById("shopping-list");
-const squareSize = 30;
+
 const nameInput = document.getElementById("list-name");
 const listSize = document.getElementById("list-size");
 let shoppingLists = [];
@@ -31,27 +28,30 @@ function renderList(list) {
     inputText.value = item.name;
     inputText.addEventListener("input", () => {
       item.name = inputText.value;
+      saveLists();
     });
-    li.appendChild(inputText);
+
     inputCheck.type = "checkbox";
     inputCheck.checked = item.checked;
     if (inputCheck.checked) {
-      inputText.style.textDecoration = "line-through";
+      inputText.classList.add("checked");
     }
     inputCheck.addEventListener("change", () => {
       item.checked = inputCheck.checked;
       if (item.checked) {
-        inputText.style.textDecoration = "line-through";
+        inputText.classList.add("checked");
       } else {
-        inputText.style.textDecoration = "none";
+        inputText.classList.remove("checked");
       }
+      saveLists();
     });
-    li.appendChild(inputCheck);
+    li.appendChild(inputText);
+    li.prepend(inputCheck);
     ul.appendChild(li);
   }
   shoppingList.appendChild(ul);
   const deleteButton = document.createElement("button");
-  deleteButton.innerText = "Delete list";
+  deleteButton.innerText = "🗑️ Fjern";
   deleteButton.addEventListener("click", () => {
     const index = shoppingLists.indexOf(list);
     if (index !== -1) {
@@ -73,11 +73,6 @@ function renderLists() {
   }
 }
 
-const lists = [
-  { "list one": { "item 1": false, "item 2": false, "item 3": true } },
-  { "list two": { "item 1": true } },
-];
-
 button.addEventListener("click", () => {
   generateNewList(nameInput.value, listSize.value);
   renderLists();
@@ -95,7 +90,6 @@ function generateNewList(name, size) {
   saveLists();
 }
 
-saveButton.addEventListener("click", saveLists);
 function saveLists() {
   localStorage.setItem("shoppingLists", JSON.stringify(shoppingLists));
 }

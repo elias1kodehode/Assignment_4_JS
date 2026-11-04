@@ -7,27 +7,128 @@
 body {
   height: 100vh;
   width: 100vw;
+  background-color: #f1f5f9;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #0f172a;
 }
+header {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+header button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
 
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+}
+header button:hover {
+  background-color: #1d4ed8;
+}
 .big-container {
-  margin-top: 15px;
-  margin-left: 15px;
+  margin: 15px;
   height: 90dvh;
   position: relative;
+
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  align-items: start;
 }
 ul {
-  list-style: inside;
+  list-style: none;
 }
+.shopping-list input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #2563eb;
+}
+
 .shopping-list {
-  padding: 15px;
-  background-color: grey;
-  border: 1px solid black;
-  border-radius: 8px;
-  min-width: 200px;
-  min-height: 300px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  transition: box-shadow 0.2s ease;
 }
-h1 {
-  text-align: center;
+.shopping-list:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.top-bar {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 8px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin-bottom: 3px;
+}
+.shopping-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.checked {
+  text-decoration: line-through;
+  text-decoration-color: #94a3b8;
+  text-decoration-thickness: 1.5px;
+  color: #94a3b8;
+}
+h2 {
+  margin-bottom: 12px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.shopping-list input[type="text"] {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  border-bottom: 1px solid #cbd5e1;
+  background: transparent;
+  padding: 8px 4px;
+}
+.shopping-list input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 2px 0 0 #2563eb;
+}
+.shopping-list button {
+  background-color: #fff1f2;
+  color: #be123c;
+  border: 1px solid transparent;
+  border-radius: 8px;
+
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  transition: background-color 0.2s ease;
+}
+.shopping-list button:hover {
+  background-color: #ffe4e6;
+}
+
+header input {
+  border: none;
+  border-bottom: 1px solid #cbd5e1;
+  background: transparent;
+  padding: 8px 4px;
+}
+header input:focus {
+  outline: none;
+  box-shadow: 0 2px 0 0 #2563eb;
 }
